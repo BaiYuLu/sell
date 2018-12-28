@@ -1,0 +1,15 @@
+{
+  "name": "jsonserver",
+  "version": "1.0.0",
+  "description": "text restful api",
+  "main": "index.js",
+  "scripts": {
+    "json:server": "json-server --watch data.json",
+		"json:server:remote":"json-server http://jsonplaceholder.typicode.com/data"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.14.0"
+  }
+}
