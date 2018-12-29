@@ -8,7 +8,7 @@
       <div class="tab-item"><router-link to="/seller" class="tab-item">卖家</router-link></div>
     </div>
 
-    <router-view :seller="seller"></router-view>
+    <keep-alive><router-view :seller="seller"></router-view></keep-alive>
 
   </div>
 </template>
@@ -16,11 +16,18 @@
 <script>
 import axios from 'axios'
 import header from './components/header/header.vue'
+import {urlParse} from './common/js/util'
+import Vue from 'vue'
 export default {
   name: 'App',
   data() {
     return{
-      seller:{}
+      seller:{
+        // id: (() => {
+        //   let queryParam = urlParse();
+        //   return queryParam.id;
+        // })()
+      }
     }
   },
   components: {
@@ -28,8 +35,11 @@ export default {
   },
   created() {
     //do something after creating vue instance
+
     axios.get('http://localhost:3000/seller').then((response)=>{
       this.seller=response.data;
+      // this.seller = Object.assign({}, this.seller, response.data);
+
       //console.log(this.seller)
     });
   }
